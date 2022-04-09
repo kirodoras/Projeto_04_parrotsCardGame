@@ -25,6 +25,7 @@ header{
     justify-content: center;
     align-items: center;
     text-align: center;
+
     width: 100%;
 }
 
@@ -43,24 +44,43 @@ h1 {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    position: relative;
 
     height: 360px;
     max-width: 1200px;
 }
 
-.cards li{
+li {
     display: flex;
+    justify-content: center;
     align-items: center;
 
     width: var(--largura-carta);
     height: var(--altura-carta);
     margin: 15px;
 
-    background: var(--bd-card) url(../imagens/card-front.png) no-repeat center;
-    background-size: 80%;
+    background: var(--bd-card);
 
     border-radius: 10px;
     border: 1px solid var(--cor-borda);
+}
+
+.card-front{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+}
+.card-front img {
+    width: 80%;
+}
+
+.card-front{
+
+}
+.card-back {
+  
 }
 
 .hidden {
@@ -68,7 +88,7 @@ h1 {
 }
 
 @media (max-width:540px) {
-    .cards li{
+    li{
         margin: 15px calc((100% - var(--largura-carta))/2);
     }
 }
