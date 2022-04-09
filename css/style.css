@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --cor-text: #75B79E;
+    --bg-cor: #EEF9BF;
+    --bd-card: #A7E9AF;
+    --cor-borda: #7ab08e;
+    --font-padrao:'Roboto', sans-serif; 
+    --largura-carta: 120px;
+    --altura-carta: 150px;
+}
+
+body {
+    font-family: var(--font-padrao);
+    background-color: var(--bg-cor);
+}
+
+main {
+    display: flex;
+    justify-content: center; 
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+h1 {
+    margin: 40px 0px;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 66px;
+    letter-spacing: -0.004em;
+
+    color: var(--cor-text);
+}
+.cards{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    height: 360px;
+    max-width: 1200px;
+}
+
+.cards li{
+    display: flex;
+    align-items: center;
+
+    width: var(--largura-carta);
+    height: var(--altura-carta);
+    margin: 15px;
+
+    background: var(--bd-card) url(../imagens/card-front.png) no-repeat center;
+    background-size: 80%;
+
+    border-radius: 10px;
+    border: 1px solid var(--cor-borda);
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width:540px) {
+    .cards li{
+        margin: 15px calc((100% - var(--largura-carta))/2);
+    }
+}
