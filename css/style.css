@@ -60,7 +60,7 @@ li {
     margin: 15px;
 
     background: var(--bd-card);
-
+    box-shadow: 0.5px 0.5px 5px rgba(0, 0, 0, 0.308);
     border-radius: 10px;
     border: 1px solid var(--cor-borda);
 }

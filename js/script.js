@@ -7,10 +7,13 @@ let imgCount = 0;
 let cartasArray = [];
 let cartasRandom = [];
 
+let contador = 0;
+let id = 0;
+
 function gameBegin () {
     quantidadeDeCartas = Number(prompt("Com quantas cartas você quer jogar? \nEscolha um número par entre 4 e 14"));
     localDasCartas = document.querySelector("ul");
-
+    contar();
     if((quantidadeDeCartas >= 4) & (quantidadeDeCartas <= 14) & (quantidadeDeCartas%2 === 0)) {
         for(let i = 1; i <= quantidadeDeCartas; i++){
             cartasArray.push(`
@@ -110,8 +113,9 @@ function gameEnd(){
 let reiniciar = 0;
 function endAlert (){
     if(reiniciar !== "não"){
-        alert(`Você ganhou em ${jogadas} jogadas !`);
+        alert(`Você ganhou em ${jogadas} jogadas, em ${contador} segundos !`);
     }
+    clearInterval(id);
     reiniciar = prompt("Gostaria de reiniciar a partida ?\nResponda com sim ou não");
     if(reiniciar == "sim") {
         resetarLets();
@@ -125,13 +129,10 @@ function resetarLets(){
     localDasCartas.innerHTML = "";
     quantidadeDeCartas = 0;
     localDasCartas = 0;
-
     imagensCartas = ["imagens/revertitparrot.gif","imagens/tripletsparrot.gif","imagens/bobrossparrot.gif","imagens/metalparrot.gif","imagens/explodyparrot.gif","imagens/fiestaparrot.gif","imagens/unicornparrot.gif"];
     imgCount = 0;
-
     cartasArray = [];
     cartasRandom = [];
-
     cartasViradas = 0;
     primeiraCarta = 0;
     segundaCarta = 0;
@@ -139,5 +140,14 @@ function resetarLets(){
     verificaDone = 0;
     contaCartasViradas = 0;
     reiniciar = 0;
+    id = 0;
 }
-  
+
+function contar() {
+    contador = 0;
+    document.querySelector(".time").innerHTML = contador;
+    id = setInterval(function(){
+        contador++;
+        document.querySelector(".time").innerHTML = contador;
+    }, 1000);
+  }
