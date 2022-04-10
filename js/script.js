@@ -69,13 +69,13 @@ function clickcard(elemento){
             cartasViradas = 0;
             primeiraCarta = 0;
             segundaCarta = 0;
+            gameEnd();
         }
         if(primeiraCarta.innerHTML !== segundaCarta.innerHTML){
             cartasViradas = 2;
             setTimeout(girar,1000);
         }
     }
-    gameEnd();
 }
 
 function comparador() { 
@@ -94,12 +94,21 @@ function girar(){
 
 function gameEnd(){
     verificaDone = document.querySelectorAll("li");
+    contaCartasViradas = 0;
     for(let i = 0; i < verificaDone.length; i++){
         if(verificaDone[i].classList.contains(".done")){
             contaCartasViradas++;
             console.log(contaCartasViradas);
+            
         }
     }
+    if(quantidadeDeCartas === contaCartasViradas){
+        setTimeout(endAlert,1000);
+    }
     console.log(verificaDone);
+}
+
+function endAlert (){
+    alert(`Você ganhou em ${jogadas} jogadas !`);
 }
 
