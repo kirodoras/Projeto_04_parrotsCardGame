@@ -26,7 +26,7 @@ function gameBegin () {
         }
         cartasRandom = cartasArray.sort(comparador);
         for(let i = 0; i < quantidadeDeCartas; i++){
-            localDasCartas.innerHTML += cartasRandom[i]
+            localDasCartas.innerHTML += cartasRandom[i];
         }
     } else {
         gameBegin();
@@ -99,16 +99,45 @@ function gameEnd(){
         if(verificaDone[i].classList.contains(".done")){
             contaCartasViradas++;
             console.log(contaCartasViradas);
-            
         }
     }
     if(quantidadeDeCartas === contaCartasViradas){
-        setTimeout(endAlert,1000);
+        setTimeout(endAlert,600);
     }
     console.log(verificaDone);
 }
 
+let reiniciar = 0;
 function endAlert (){
-    alert(`Você ganhou em ${jogadas} jogadas !`);
+    if(reiniciar !== "não"){
+        alert(`Você ganhou em ${jogadas} jogadas !`);
+    }
+    reiniciar = prompt("Gostaria de reiniciar a partida ?\nResponda com sim ou não");
+    if(reiniciar == "sim") {
+        resetarLets();
+        gameBegin();
+    }
+    if(reiniciar == "não"){
+        endAlert();
+    }
 }
+function resetarLets(){
+    localDasCartas.innerHTML = "";
+    quantidadeDeCartas = 0;
+    localDasCartas = 0;
 
+    imagensCartas = ["imagens/revertitparrot.gif","imagens/tripletsparrot.gif","imagens/bobrossparrot.gif","imagens/metalparrot.gif","imagens/explodyparrot.gif","imagens/fiestaparrot.gif","imagens/unicornparrot.gif"];
+    imgCount = 0;
+
+    cartasArray = [];
+    cartasRandom = [];
+
+    cartasViradas = 0;
+    primeiraCarta = 0;
+    segundaCarta = 0;
+    jogadas = 0;
+    verificaDone = 0;
+    contaCartasViradas = 0;
+    reiniciar = 0;
+}
+  
